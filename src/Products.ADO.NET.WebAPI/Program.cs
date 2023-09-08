@@ -7,7 +7,7 @@ using Products.ADO.NET.WebAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IConnectionDataBase, SQLServerDatabase>();
+builder.Services.AddSingleton<IConnectionDataBase, SQLServerDataBase>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductBusiness, ProductBusiness>();
 

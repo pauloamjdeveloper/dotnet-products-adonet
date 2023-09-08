@@ -1,6 +1,6 @@
 ﻿using Products.ADO.NET.WebAPI.Data;
 using Products.ADO.NET.WebAPI.Models;
-using Products.ADO.NET.WebAPI.Utilities;
+using Products.ADO.NET.WebAPI.Exceptions;
 using System.Data;
 using System.Data.SqlClient;
 

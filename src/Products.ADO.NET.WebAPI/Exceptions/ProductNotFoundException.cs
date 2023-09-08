@@ -1,4 +1,4 @@
-﻿namespace Products.ADO.NET.WebAPI.Utilities
+﻿namespace Products.ADO.NET.WebAPI.Exceptions
 {
     public class ProductNotFoundException : Exception
     {

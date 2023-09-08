@@ -3,11 +3,11 @@ using System.Data.SqlClient;
 
 namespace Products.ADO.NET.WebAPI.Data.Implementations
 {
-    public class SQLServerDatabase : IConnectionDataBase
+    public class SQLServerDataBase : IConnectionDataBase
     {
         private readonly string _connectionString;
 
-        public SQLServerDatabase()
+        public SQLServerDataBase()
         {
             _connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=DB_ProductsADONET;User ID=sa;Password=********";
         }

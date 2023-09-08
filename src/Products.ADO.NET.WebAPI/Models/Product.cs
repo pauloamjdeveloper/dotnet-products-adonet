@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using Products.ADO.NET.WebAPI.Utilities;
+using Products.ADO.NET.WebAPI.Exceptions;
 
 namespace Products.ADO.NET.WebAPI.Models
 {
