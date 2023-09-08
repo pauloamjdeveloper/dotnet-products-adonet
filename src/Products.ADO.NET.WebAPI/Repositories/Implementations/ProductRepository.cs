@@ -9,11 +9,15 @@ namespace Products.ADO.NET.WebAPI.Repositories.Implementations
     public class ProductRepository : IProductRepository
     {
         private readonly IConnectionDataBase _dataBase;
+        private readonly ILogger<ProductRepository> _logger;
 
-        public ProductRepository(IConnectionDataBase dataBase)
+        public ProductRepository(IConnectionDataBase dataBase, ILogger<ProductRepository> logger)
         {
             _dataBase = dataBase;
+            _logger = logger;
         }
+
+        private string _errorMessage = "";
 
         public List<Product> GetAll()
         {
@@ -50,7 +54,9 @@ namespace Products.ADO.NET.WebAPI.Repositories.Implementations
             }
             catch (SqlException exception)
             {
-                throw new Exception("Error getting all products: " + exception.Message);
+                _errorMessage = $"Error getting all products: {exception.Message}";
+                _logger.LogError(exception, _errorMessage);
+                throw new Exception(_errorMessage);
             }
             finally
             {
@@ -95,7 +101,9 @@ namespace Products.ADO.NET.WebAPI.Repositories.Implementations
             }
             catch (SqlException exception)
             {
-                throw new Exception("Error getting product by id: " + exception.Message);
+                _errorMessage = $"Error getting product by id: {exception.Message}";
+                _logger.LogError(exception, _errorMessage);
+                throw new Exception(_errorMessage);
             }
             finally 
             {
@@ -128,7 +136,9 @@ namespace Products.ADO.NET.WebAPI.Repositories.Implementations
             }
             catch (SqlException exception)
             {
-                throw new Exception("Error creating product: " + exception.Message);
+                _errorMessage = $"Error creating product: {exception.Message}";
+                _logger.LogError(exception, _errorMessage);
+                throw new Exception(_errorMessage);
             }
             finally 
             {
@@ -162,7 +172,9 @@ namespace Products.ADO.NET.WebAPI.Repositories.Implementations
             }
             catch (SqlException exception)
             {
-                throw new Exception("Error updating product: " + exception.Message);
+                _errorMessage = $"Error updating product: {exception.Message}";
+                _logger.LogError(exception, _errorMessage);
+                throw new Exception(_errorMessage);
             }
             finally
             {
@@ -189,7 +201,9 @@ namespace Products.ADO.NET.WebAPI.Repositories.Implementations
             }
             catch (SqlException exception)
             {
-                throw new Exception("Error deleting product: " + exception.Message);
+                _errorMessage = $"Error deleting product: {exception.Message}";
+                _logger.LogError(exception, _errorMessage);
+                throw new Exception(_errorMessage);
             }
             finally
             {
