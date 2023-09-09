@@ -23,11 +23,7 @@ namespace Products.ADO.NET.WebAPI.Models
 
         public Product(int id, string name, string description, decimal price, int quantity)
         {
-            Id = id;
-            Name = name;
-            Description = description;
-            Price = price;
-            Quantity = quantity;
+            Validate(id, name, description, price, quantity);
         }
 
         private void Validate(int id, string name, string description, decimal price, int quantity) 
