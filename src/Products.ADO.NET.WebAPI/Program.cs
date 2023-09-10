@@ -4,6 +4,7 @@ using Products.ADO.NET.WebAPI.Data.Implementations;
 using Products.ADO.NET.WebAPI.Data;
 using Products.ADO.NET.WebAPI.Repositories.Implementations;
 using Products.ADO.NET.WebAPI.Repositories;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,22 @@ builder.Services.AddCors();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "Products ADO.NET WebAPI",
+        Version = "v1",
+        Description = "Project to manipulate a simple CRUD using ADO.NET.",
+        Contact = new OpenApiContact
+        {
+            Name = "Paulo Alves",
+            Email = "pj38alves@gmail.com",
+            Url = new Uri("https://github.com/pauloamjdeveloper"),
+        },
+    });
+});
 
 var app = builder.Build();
 
