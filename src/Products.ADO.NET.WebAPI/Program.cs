@@ -12,7 +12,15 @@ builder.Services.AddSingleton<IConnectionDataBase, SQLServerDataBase>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductBusiness, ProductBusiness>();
 
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAny", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
 
 builder.Services.AddControllers();
 
@@ -46,7 +54,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.UseCors();
+app.UseCors("AllowAny");
 
 app.MapControllers();
 
